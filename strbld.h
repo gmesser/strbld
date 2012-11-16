@@ -5,6 +5,19 @@
 
 #include <stdlib.h>
 
+// c99 variadic macro
+#define multi_strbld(dest, ...) {\
+	char *d = NULL;\
+	for (char **iter = (char*[]){__VA_ARGS__, NULL}; *iter; iter++) {\
+		if (d == NULL) {\
+			d = strbld(dest, *iter);\
+		}\
+		else {\
+			d = strbld(d, *iter);\
+		}\
+	}\
+}
+
 #ifdef __cplusplus
 extern "C" {
 #endif
