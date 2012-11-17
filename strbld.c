@@ -1,5 +1,8 @@
 /* strbld.c - string builder */
 
+#include <stdlib.h>
+#include "strbld.h"
+
 /*
  * strbld - efficient string builder, like strcat but more efficient over multiple invocations
  *
@@ -18,6 +21,29 @@
 char *strbld(char *dest, const char *src) {
 	while((*dest = *src++)) {
 		dest++;
+	}
+	return dest;
+}
+
+/**
+ * strbld_array - build up a string from an array of strings
+ *
+ * This function is called by the multi_strbld macro.  It can also be
+ * called directly with an array.
+ *
+ * Parameter: dest - The destination pointer
+ * Parameter: src  - The array of source pointers - last element must be NULL
+ * Returns:   Pointer to the destination string
+ */
+char *strbld_array(char *dest, const char *src[]) {
+	char *d;
+	for (int i = 0; src[i] != NULL; i++) {
+		if (i == 0) {
+			d = strbld(dest, src[i]);
+		}
+		else {
+			d = strbld(d, src[i]);
+		}
 	}
 	return dest;
 }

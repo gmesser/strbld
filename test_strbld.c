@@ -10,8 +10,8 @@ int main(int argc, char *argv[]) {
 	int i;
 	char mydest[20];
 	char *ret;
-	char *strings[] = {"Say", " ", "hello", " ", "world"};
-	int numstrings = 5;
+	char *strings[] = {"Say", " ", "hello", " ", "world", NULL};
+	int numstrings = (sizeof(strings) / sizeof(strings[0])) - 1;
 
 	memset(mydest, 0, sizeof(mydest));
 	for(i = 0; i < numstrings; i++) {
@@ -34,6 +34,10 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	printf("test_strbld - using strbld: Final string = [%s]\n", mydest);
+
+	memset(mydest, 0, sizeof(mydest));
+	ret = strbld_array(mydest, (const char **) strings);
+	printf("test_strbld - using strbld_array: Final string = [%s]\n", mydest);
 
 	memset(mydest, 0, sizeof(mydest));
 	for(i = 0; i < numstrings; i++) {
