@@ -70,9 +70,9 @@ On the first call, you pass in a destination pointer and a source pointer.
 On subsequent calls, you pass in the previously-returned next destination pointer and a source pointer.
 The efficiency over strcat lies in not searching for the end of the destination string during each invocation.
 
-Parameter: dest - The destination pointer
-Parameter: src  - The source pointer
-Returns:   Pointer to the end of the destination string
+Parameter: dest - The destination pointer<br>
+Parameter: src  - The source pointer<br>
+Returns:   Pointer to the end of the destination string<br>
 
 
 * strbld_array - build up a string from an array of strings
@@ -82,9 +82,9 @@ called directly with an array.  It uses repeated calls to strbld()
 to build up the destination string and returns a pointer to the end of the
 destination string.
 
-Parameter: dest - The destination pointer
-Parameter: src  - The array of source pointers - last element must be NULL
-Returns:   Pointer to the end of the destination string
+Parameter: dest - The destination pointer<br>
+Parameter: src  - The array of source pointers - last element must be NULL<br>
+Returns:   Pointer to the end of the destination string<br>
 
 
 * strnbld - efficient string builder, like strncat but more efficient over multiple invocations
@@ -103,14 +103,14 @@ will be copied to the destination in this case.  Ensure enough room for the pote
 
 The n parameter applies to each invocation, not to the total for all invocations.
  
-Parameter: dest - The destination pointer
-Parameter: src  - The source pointer
-Parameter: n    - The maximum number of characters to copy from src to dest
-Returns:   Pointer to the end of the destination string
+Parameter: dest - The destination pointer<br>
+Parameter: src  - The source pointer<br>
+Parameter: n    - The maximum number of characters to copy from src to dest<br>
+Returns:   Pointer to the end of the destination string<br>
 
 
 * multi_strbld - macro for easily calling strbld_array() with an arbitrary list of strings.
 
-Parameter:  dest - The destination pointer
-Parameters: A list of strings
-Returns:    Pointer to the destination string
+Parameter:  dest - The destination pointer<br>
+Parameters: A list of strings<br>
+Returns:    Pointer to the destination string<br>
