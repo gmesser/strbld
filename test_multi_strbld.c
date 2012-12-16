@@ -8,10 +8,14 @@
 int main(int argc, char *argv[]) {
 	char mydest[20];
 	char *strings[] = {"Say", " ", "hello", " ", "world"};
+	char *ret;
 
+#if __STDC_VERSION__ >= 199901L
+// c99
 	memset(mydest, 0, sizeof(mydest));
 	multi_strbld(mydest, strings[0], strings[1], strings[2], strings[3], strings[4]);
 	printf("test_multi_strbld - using multi_strbld: Final string = [%s]\n", mydest);
+#endif
 
 	return 0;
 }

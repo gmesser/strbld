@@ -2,7 +2,7 @@ strbld
 ======
 
 String builder, more efficient than strcat.  There are three functions provide here, and one macro.
-The macro can be used when compiling is set up to allow the 2011 C (c11 or c1x) language syntax.
+The macro can be used when compiling is set up to allow the 1999 C (c99) language syntax.
 
 Each function returns a pointer to the end of the destination string.  You must
 keep track of the beginning of the destination string.  The first call to one
@@ -44,7 +44,13 @@ destination string, and "the_end" always comes back from the function calls
 pointing to the end of the last string that was appended.  That is where the
 next appended string will go.
 
-One more thing: You can freely mix calls to any of these functions.
+Mixed Use
+
+One more thing: You can freely mix calls to any of these functions since they
+all behave the same way.  You cannot, however, mix the execution of the macro
+with calls to these functions because the macro does not return a pointer like
+the functions do.
+
 Here is a set of calls using each of the functions to build up a string:
 
 <pre>
@@ -57,8 +63,8 @@ Here is a set of calls using each of the functions to build up a string:
  the_end = strbld(the_end, the_arr[1]); ///// Contents: [Hello World!!\04\0]
 </pre>
 
-Functions
 
+<hr>
 
 * strbld - efficient string builder, like strcat but more efficient over multiple invocations
 
@@ -74,6 +80,8 @@ Parameter: dest - The destination pointer<br>
 Parameter: src  - The source pointer<br>
 Returns:   Pointer to the end of the destination string<br>
 
+
+<hr>
 
 * strbld_array - build up a string from an array of strings
 
@@ -91,6 +99,8 @@ Parameter: dest - The destination pointer<br>
 Parameter: src  - The array of source pointers - last element must be NULL<br>
 Returns:   Pointer to the end of the destination string<br>
 
+
+<hr>
 
 * strnbld - efficient string builder, like strncat but more efficient over multiple invocations
 
@@ -114,8 +124,14 @@ Parameter: n    - The maximum number of characters to copy from src to dest<br>
 Returns:   Pointer to the end of the destination string<br>
 
 
+<hr>
+
 * multi_strbld - macro for easily calling strbld_array() with an arbitrary list of strings.
+
+This macro does not return a pointer, so it cannot be freely mixed with calls
+to the other functions.
 
 Parameter:  dest - The destination pointer<br>
 Parameters: A list of strings - the macro automatically adds the NULL as the last array element after the list of strings as required by strbld_array<br>
-Returns:    Pointer to the destination string<br>
+Returns:    There is no return value from this macro.<br>
+
