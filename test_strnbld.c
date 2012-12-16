@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
 				ret = strncat(mydest, strings[i], n);
 			}
 		}
-		printf("test_strnbld - using strncat (%d): Final string = [%s]\n", n, mydest);
+		printf("test_strnbld - using strncat (%d) for comparison: Final string = [%s]\n", n, mydest);
 
 		memset(mydest, '#', sizeof(mydest));
 		mydest[0] = '\0';
@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
 				ret = strncat(mydest, strings[i], n);
 			}
 		}
-		printf("test_strnbld - using strncat (%d): Final string = [%s]\n", n, mydest);
+		printf("test_strnbld - using strncat (%d) for comparison: Final string = [%s]\n", n, mydest);
 	}
 
 	return 0;

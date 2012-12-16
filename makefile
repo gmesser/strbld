@@ -1,5 +1,5 @@
 CFLAGS = -Wall
-CC=gcc -std=c1x
+CC=gcc -std=c99
 
 .c.o :
 	${CC} ${CFLAGS} -c $<
