@@ -12,20 +12,26 @@ For example, assume there is a pointer called "the_beginning" that points to a
 buffer that has room for 15 characters and a '\0' byte, and another pointer
 called "the_end" that is NULL to start with:
 
+<pre>
  char *the_beginning = "012345678901234"; // Contents: [012345678901234\0]
  char *the_end = NULL;
+</pre>
 
 The first call to either of these functions will look like this:
 
+<pre>
  the_end = strbld(the_beginning, "Hello"); // Contents: [Hello\0678901234\0]
+</pre>
 
 Now "the_beginning" still points to the buffer, but "the_end" points to the
 '\0' byte that was written at the end of the first string copied, "Hello".
 
 All of the subsequent calls to either of these functions will look like this:
 
+<pre>
  the_end = strbld(the_end, " "); //////////// Contents: [Hello \078901234\0]
  the_end = strbld(the_end, "World!"); /////// Contents: [Hello World!\034\0]
+</pre>
 
 Notice that the return value from the first call is used as the destination
 parameter for all of the subsequent calls.  The return value points to the '\0'
@@ -41,6 +47,7 @@ next appended string will go.
 One more thing: You can freely mix calls to any of these functions.
 Here is a set of calls using each of the functions to build up a string:
 
+<pre>
  char *the_end = NULL;
  char *the_arr[] = {"World", "!", NULL}; // The last element MUST be NULL
  char *the_beginning = "012345678901234"; /// Contents: [012345678901234\0]
@@ -48,7 +55,7 @@ Here is a set of calls using each of the functions to build up a string:
  the_end = strnbld(the_end, " ", 1); //////// Contents: [Hello \078901234\0]
  the_end = strbld_array(the_end, the_arr); // Contents: [Hello World!\034\0]
  the_end = strbld(the_end, the_arr[1]); ///// Contents: [Hello World!!\04\0]
-
+</pre>
 
 Functions
 
