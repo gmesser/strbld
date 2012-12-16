@@ -8,7 +8,6 @@
 int main(int argc, char *argv[]) {
 	char mydest[20];
 	char *strings[] = {"Say", " ", "hello", " ", "world"};
-	char *ret;
 
 #if __STDC_VERSION__ >= 199901L
 // c99
