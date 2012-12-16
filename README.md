@@ -52,8 +52,8 @@ all behave the same way.  You cannot, however, mix the execution of the macro
 with calls to these functions because the macro does not return a pointer like
 the functions do.
 
-Here is a set of calls mixing calls to each of the functions to build up a
-single string:
+Here is a mixed set of calls using each of the functions to build up a single
+string:
 
 <pre>
  char *the_end = NULL;
