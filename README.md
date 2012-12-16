@@ -79,8 +79,13 @@ Returns:   Pointer to the end of the destination string<br>
 
 This function is called by the multi_strbld macro.  It can also be
 called directly with an array.  It uses repeated calls to strbld()
-to build up the destination string and returns a pointer to the end of the
-destination string.
+to build up the destination string.
+The source strings in the array must be null-terminated.
+The strbld function is meant to be invoked repeatedly to build up a string from several source strings.
+It always returns a pointer to the '\0' character at the end of the destination.
+On the first call, you pass in a destination pointer and a source pointer.
+On subsequent calls, you pass in the previously-returned next destination pointer and a source pointer.
+The efficiency over strcat lies in not searching for the end of the destination string during each invocation.
 
 Parameter: dest - The destination pointer<br>
 Parameter: src  - The array of source pointers - last element must be NULL<br>
@@ -112,5 +117,5 @@ Returns:   Pointer to the end of the destination string<br>
 * multi_strbld - macro for easily calling strbld_array() with an arbitrary list of strings.
 
 Parameter:  dest - The destination pointer<br>
-Parameters: A list of strings<br>
+Parameters: A list of strings - the macro automatically adds the NULL as the last array element after the list of strings as required by strbld_array<br>
 Returns:    Pointer to the destination string<br>
