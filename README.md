@@ -1,8 +1,9 @@
 strbld
 ======
 
-String builder, more efficient than strcat.  There are three functions provide here, and one macro.
-The macro can be used when compiling is set up to allow the 1999 C (c99) language syntax.
+String builder, more efficient than strcat.  There are three functions provided
+here, and one macro.  The macro can be used when compiling is set up to allow
+the 1999 C (c99) language syntax.
 
 Each function returns a pointer to the end of the destination string.  You must
 keep track of the beginning of the destination string.  The first call to one
@@ -51,7 +52,8 @@ all behave the same way.  You cannot, however, mix the execution of the macro
 with calls to these functions because the macro does not return a pointer like
 the functions do.
 
-Here is a set of calls using each of the functions to build up a string:
+Here is a set of calls mixing calls to each of the functions to build up a
+single string:
 
 <pre>
  char *the_end = NULL;
