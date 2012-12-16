@@ -16,7 +16,7 @@
  *
  * Parameter: dest - The destination pointer
  * Parameter: src  - The source pointer
- * Returns:   Pointer to the end of the destination string
+ * Returns:   Pointer to the end of the destination string - the next destination
  */
 char *strbld(char *dest, const char *src) {
 	while((*dest = *src++)) {
@@ -29,11 +29,12 @@ char *strbld(char *dest, const char *src) {
  * strbld_array - build up a string from an array of strings
  *
  * This function is called by the multi_strbld macro.  It can also be
- * called directly with an array.
+ * called directly with an array.  It uses repeated calls to strbld()
+ * to build up the destination string.
  *
  * Parameter: dest - The destination pointer
  * Parameter: src  - The array of source pointers - last element must be NULL
- * Returns:   Pointer to the destination string
+ * Returns:   Pointer to the end of the destination string - the next destination
  */
 char *strbld_array(char *dest, const char *src[]) {
 	char *d;
@@ -45,6 +46,6 @@ char *strbld_array(char *dest, const char *src[]) {
 			d = strbld(d, src[i]);
 		}
 	}
-	return dest;
+	return d;
 }
 

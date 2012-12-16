@@ -22,7 +22,7 @@
  * Parameter: dest - The destination pointer
  * Parameter: src  - The source pointer
  * Parameter: n    - The maximum number of characters to copy from src to dest
- * Returns:   Pointer to the end of the destination string
+ * Returns:   Pointer to the end of the destination string - the next destination
  */
 char *strnbld(char *dest, const char *src, size_t n) {
 	int count = 0;

@@ -1,5 +1,5 @@
 CFLAGS = -Wall
-CC=gcc -std=c99
+CC=gcc -std=c1x
 
 .c.o :
 	${CC} ${CFLAGS} -c $<
@@ -17,8 +17,8 @@ test_strnbld.txt : test_strnbld
 test_multi_strbld.txt : test_multi_strbld
 	./$? > $@
 
-test_strbld : test_strbld.o strbld.o
-	${CC} ${CFLAGS} -o $@ test_strbld.o strbld.o
+test_strbld : test_strbld.o strbld.o strnbld.o
+	${CC} ${CFLAGS} -o $@ test_strbld.o strbld.o strnbld.o
 
 test_strnbld : test_strnbld.o strnbld.o
 	${CC} ${CFLAGS} -o $@ test_strnbld.o strnbld.o
