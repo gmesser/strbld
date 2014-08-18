@@ -1,8 +1,8 @@
-/* strnbld.c - string builder */
+/** \file strnbld.c - string builder */
 
 #include <stddef.h>
 
-/*
+/**
  * strnbld - efficient string builder, like strncat but more efficient over multiple invocations
  *
  * Copies at most n characters from the source string to the destination.  
@@ -19,12 +19,12 @@
  * 
  * The n parameter applies to each invocation, not to the total for all invocations.
  * 
- * Parameter: dest - The destination pointer
- * Parameter: src  - The source pointer
- * Parameter: n    - The maximum number of characters to copy from src to dest
- * Returns:   Pointer to the end of the destination string - the next destination
+ * \param dest - The destination pointer
+ * \param src  - The source pointer
+ * \param n    - The maximum number of characters to copy from src to dest
+ * \return   Pointer to the end of the destination string - the next destination
  */
-char *strnbld(char *dest, const char *src, size_t n) {
+char *strnbld(char *dest, char const *src, size_t n) {
 	int count = 0;
 	while(count < n && (*dest = *src++)) {
 		dest++;
@@ -35,4 +35,3 @@ char *strnbld(char *dest, const char *src, size_t n) {
 	}
 	return dest;
 }
-

@@ -68,7 +68,5 @@ int main(int argc, char *argv[]) {
 		}
 		printf("test_strnbld - using strncat (%d) for comparison: Final string = [%s]\n", n, mydest);
 	}
-
-	return 0;
 }
 

@@ -89,7 +89,4 @@ int main(int argc, char *argv[]) {
 	printf("test_strbld - using strbld, strnbld, and strbld_array: Curr. string = [%s]\n", the_beginning);
 	the_end = strbld(the_end, the_arr[1]); ///// Contents: [Hello World!!\04\0]
 	printf("test_strbld - using strbld, strnbld, and strbld_array: Final string = [%s]\n", the_beginning);
-
-	return 0;
 }
-

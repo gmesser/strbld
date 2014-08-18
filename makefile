@@ -1,10 +1,13 @@
-CFLAGS = -Wall
-CC=gcc -std=c99
+CFLAGS = -Wall -O3
+CC=gcc -std=c1x
 
 .c.o :
 	${CC} ${CFLAGS} -c $<
 
-all : test
+all : doc test
+
+doc : strbld.c strnbld.c strbld.h Doxyfile
+	doxygen Doxyfile
 
 test : test_strbld.txt test_strnbld.txt test_multi_strbld.txt
 
@@ -43,6 +46,7 @@ clean_targets :
 	rm -f *.o
 	rm -f test_strbld
 	rm -f test_strnbld
-	rm -f test_multi_strnbld
-	rm -f test_str*.txt
-
+	rm -f test_multi_strbld
+	rm -f test_*.txt
+	rm -rf html
+	rm -rf man

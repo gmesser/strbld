@@ -17,5 +17,4 @@ int main(int argc, char *argv[]) {
 	printf("test_multi_strbld - using multi_strbld: Final string = [%s]\n", mydest);
 #endif
 
-	return 0;
 }
